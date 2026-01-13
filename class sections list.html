@@ -6,190 +6,393 @@
     <link rel="icon" type="image/png" href="https://studentvisiontc.github.io/SVTC-Images/SV%20Circle%20logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <title>Sections and Topics - Detailed View</title>
+    <title>S.V.T.C. Professional Test Portal</title>
     <style>
         :root {
-            --primary-blue: #00008B;
-            --accent-orange: #ffa500;
-            --bg-gray: #f4f7f9;
-            --text-dark: #1e293b;
-            --border-color: #e2e8f0;
-            --topic-bg: #e0f2fe; 
-            --white: #ffffff;
-            --danger-red: #d00000;
+            --primary: #00008B;
+            --accent: #ffa500;
+            --bg: #f8fafc;
+            --text: #0f172a;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --danger: #ef4444;
+            --card-bg: #ffffff;
         }
 
-        * { font-family: 'Roboto Slab', serif; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { background-color: var(--bg-gray); color: var(--text-dark); margin: 0; padding: 0; }
+        * { font-family: 'Inter', sans-serif; box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
 
-        main { 
-            width: 100%; 
-            max-width: 1400px; 
-            margin: 0 auto; 
-            background: white;
-            min-height: 100vh;
-        }
+        /* Main Layout */
+        main { width: 100%; max-width: 1200px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 50px rgba(0,0,0,0.05); }
 
-        /* HEADLINE */
-        .page-header {
-            padding: 30px clamp(15px, 5vw, 40px);
-            text-align: center;
-            border-bottom: 2px solid var(--border-color);
-            background: white;
-        }
-        .page-header h1 {
-            font-size: clamp(22px, 4vw, 32px);
-            font-weight: 900;
-            color: var(--primary-blue);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 0;
-        }
+        .page-header { padding: 40px 20px; text-align: center; background: linear-gradient(to right, #00008B, #0000cd); color: white; }
+        .page-header h1 { font-size: 28px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
 
-        /* SUBJECT PANES */
-        .subject-pane { 
-            padding: clamp(20px, 4vw, 40px) clamp(15px, 5vw, 40px); 
-            border-bottom: 1px solid var(--border-color);
-            background: white;
-        }
+        /* Subject Section */
+        .subject-pane { padding: 30px 20px; border-bottom: 8px solid var(--bg); }
         .sub-head-row { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
-        .sub-head-row i { font-size: clamp(22px, 4vw, 28px); color: var(--accent-orange); }
-        .sub-head-row h3 { font-size: clamp(18px, 3.5vw, 24px); font-weight: 900; color: var(--primary-blue); margin: 0; }
+        .sub-head-row i { font-size: 24px; color: var(--accent); }
+        .sub-head-row h3 { font-size: 22px; font-weight: 800; color: var(--primary); }
         
         .sub-inspiration { 
-            padding: 18px; 
-            font-size: clamp(12px, 2.2vw, 14.5px); 
-            line-height: 1.7; 
-            color: #334155; 
-            text-align: justify; 
-            font-weight: 500; 
-            background: #f8fafc; 
-            border-radius: 12px; 
-            border-left: 5px solid var(--accent-orange); 
-            margin-bottom: 25px; 
+            padding: 15px; font-size: 13.5px; line-height: 1.6; color: #475569; 
+            background: #f1f5f9; border-radius: 8px; border-left: 4px solid var(--accent); 
+            margin-bottom: 20px; text-align: justify;
         }
-        
-        .item-row { 
-            background: white; 
-            border: 1px solid var(--border-color); 
-            border-radius: 10px; 
-            overflow: hidden; 
-            margin-bottom: 10px; 
-            width: 100%; 
-            transition: 0.3s ease; 
-        }
-        .item-row:hover { border-color: var(--primary-blue); box-shadow: 0 4px 12px rgba(0,0,139,0.05); }
 
-        .item-top { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; width: 100%; flex-wrap: wrap; gap: 10px; }
-        .item-month { font-weight: 900; color: var(--danger-red); font-size: 11px; text-transform: uppercase; min-width: 90px; }
-        .item-meta { display: flex; gap: 12px; align-items: center; color: var(--primary-blue); font-size: 9px; font-weight: 900; flex: 1; }
-        .item-meta span { background: #eef2ff; padding: 3px 8px; border-radius: 50px; white-space: nowrap; border: 1px solid #e0e7ff; }
+        /* Compact Item Row */
+        .item-row { 
+            display: flex; flex-direction: column; background: white; 
+            border: 1px solid var(--border); border-radius: 8px; 
+            margin-bottom: 8px; overflow: hidden; transition: 0.2s;
+        }
+        .item-row:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .item-top { 
+            display: flex; align-items: center; justify-content: space-between; 
+            padding: 8px 15px; background: #fafafa; border-bottom: 1px solid #f1f5f9;
+        }
+        .item-month { font-size: 10px; font-weight: 900; color: var(--danger); width: 80px; }
+        .item-meta { display: flex; gap: 10px; flex: 1; }
+        .item-meta span { font-size: 9px; font-weight: 700; color: var(--primary); background: #eef2ff; padding: 2px 8px; border-radius: 4px; }
         
-        .item-scores { display: flex; align-items: center; gap: 8px; }
-        .score-lbl { font-size: 9px; font-weight: 800; color: #64748b; }
-        .box-grid { display: flex; gap: 5px; }
-        .box-unit { width: 32px; height: 26px; border: 1.5px solid var(--border-color); border-radius: 5px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 11px; background: #fafafa; }
-        .box-unit.scored { border-color: var(--primary-blue); color: var(--primary-blue); background: #f0f7ff; }
+        .item-scores { display: flex; align-items: center; gap: 5px; }
+        .box-grid { display: flex; gap: 3px; }
+        .box-unit { width: 24px; height: 20px; border: 1px solid var(--border); border-radius: 3px; font-size: 9px; font-weight: 800; display: flex; align-items: center; justify-content: center; background: white; }
+
+        .item-bottom { padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; background: #f0f9ff; }
+        .item-topic-name { font-size: 13px; font-weight: 700; color: #334155; }
+        .item-topic-name span { color: var(--primary); font-size: 11px; text-transform: uppercase; margin-right: 5px; }
         
-        .item-bottom { background: var(--topic-bg); padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #bae6fd; width: 100%; gap: 10px; }
-        .item-topic-name { font-size: 13px; font-weight: 800; color: #1e293b; }
-        .item-topic-name span { color: var(--primary-blue); opacity: 0.7; margin-right: 5px; font-weight: 900; }
-        .btn-take { background: var(--primary-blue); color: white; text-decoration: none; padding: 6px 18px; border-radius: 6px; font-size: 9px; font-weight: 900; text-transform: uppercase; transition: 0.3s; box-shadow: 0 2px 4px rgba(0,0,139,0.2); }
+        .btn-take { 
+            background: var(--primary); color: white; border: none; padding: 6px 15px; 
+            border-radius: 4px; font-size: 10px; font-weight: 800; text-transform: uppercase; 
+            cursor: pointer; transition: 0.2s;
+        }
         .btn-take:hover { background: #0000cc; transform: translateY(-1px); }
 
+        /* Full Screen Stylish Modal */
+        #exam-overlay { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(15, 23, 42, 0.95); display: none; z-index: 9999; 
+            backdrop-filter: blur(10px); 
+        }
+        .exam-container { 
+            width: 100%; height: 100%; display: flex; flex-direction: column; 
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        .exam-header { 
+            background: white; padding: 10px 20px; display: flex; 
+            justify-content: space-between; align-items: center; 
+            border-bottom: 2px solid var(--primary); position: sticky; top: 0; z-index: 100;
+        }
+        .exam-header h2 { font-size: 16px; color: var(--primary); font-weight: 800; max-width: 50%; }
+
+        /* Stylish 4-Box Timer */
+        .timer-container { display: flex; align-items: center; gap: 4px; }
+        .timer-box { 
+            display: flex; gap: 2px; background: #1e293b; padding: 4px; border-radius: 4px;
+        }
+        .digit { 
+            width: 24px; height: 32px; background: #334155; color: white; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 18px; font-weight: 900; border-radius: 3px;
+        }
+        .timer-sep { color: #1e293b; font-weight: 900; font-size: 20px; }
+        .timer-urgent .digit { background: var(--danger); animation: pulse 1s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+
+        .close-btn { font-size: 24px; cursor: pointer; color: #64748b; font-weight: bold; margin-left: 15px; }
+
+        /* Exam Content & Question Styles */
+        .exam-content { padding: 30px clamp(15px, 5vw, 100px); flex: 1; overflow-y: auto; }
+        .question-card { 
+            background: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; 
+            border: 1px solid var(--border); box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .q-id { color: var(--accent); font-size: 11px; font-weight: 800; margin-bottom: 5px; display: block; }
+        .q-text { font-size: 16px; font-weight: 700; margin-bottom: 15px; line-height: 1.5; }
+        .options-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .option-item { 
+            padding: 12px; border: 1.5px solid var(--border); border-radius: 8px; 
+            cursor: pointer; font-size: 14px; font-weight: 600; transition: 0.2s;
+        }
+        .option-item:hover { background: #f0f9ff; border-color: var(--primary); }
+        .option-item.selected { background: var(--primary); color: white; border-color: var(--primary); }
+        
+        /* Submit Button at the end of questions */
+        .submit-area { text-align: center; padding: 40px 0; }
+        .btn-submit { 
+            background: var(--success); color: white; border: none; padding: 15px 60px; 
+            border-radius: 50px; font-weight: 900; cursor: pointer; font-size: 16px; 
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2); transition: 0.3s;
+        }
+        .btn-submit:hover { transform: scale(1.05); background: #059669; }
+
+        /* Result & Review */
+        .result-screen { text-align: center; padding: 50px 20px; }
+        .score-circle { 
+            width: 140px; height: 140px; border-radius: 50%; border: 8px solid var(--success); 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+            margin: 0 auto 20px; background: white;
+        }
+        .score-val { font-size: 36px; font-weight: 900; color: var(--success); }
+        .review-card { background: white; padding: 20px; border-radius: 12px; margin-bottom: 15px; text-align: left; border: 1px solid var(--border); }
+        .explanation-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: 12px; font-size: 13px; margin-top: 12px; color: #92400e; }
+
         @media (max-width: 768px) {
-            .item-top { flex-direction: column; align-items: flex-start; }
-            .item-meta { width: 100%; justify-content: flex-start; margin: 5px 0; }
-            .item-scores { width: 100%; justify-content: space-between; }
+            .options-list { grid-template-columns: 1fr; }
+            .item-top { flex-wrap: wrap; }
+            .item-month { width: 100%; margin-bottom: 5px; }
+            .exam-content { padding: 20px 15px; }
         }
     </style>
 </head>
 <body>
 
 <main>
-
-    <!-- SUBJECTS CONTAINER -->
-    <div id="subjects-container">
-        <script>
-            // exact data from the up-to-date version
-            const subjectsData = [
-                { id: 1, name: "Number Systems", icon: "fa-hashtag", time: "45 MINS", 
-                  passage: "Numbers are the fundamental vocabulary of the universe! To conquer competitive gateways like JNVST, you must develop a profound intuition for how numbers interact. Mastering Roman Numerals, Place Value, and Divisibility isn't just about solving equations—it's about training your brain to see patterns and logic where others see chaos. This section builds the raw mathematical precision required for top-tier engineering and scientific careers in your future. Embrace the power of digits and become a numerical master!",
-                  topics: ["Place Value Mastery", "Number Types & Logic", "Roman Numerals", "Rounding Off Rules", "Successor & Predecessor", "Expanded Form Mastery", "Number Comparison", "Digit Formation Puzzles", "Fundamental Arithmetic Rules", "Divisibility Tests"] },
-                { id: 2, name: "Mental Ability", icon: "fa-eye", time: "60 MINS", 
-                  passage: "Mental Ability represents the absolute peak of cognitive agility. It constitutes 50% of the Navodaya entrance score because it measures your 'Intellectual Potential'—your ability to process visual data, recognize symmetry, and visualize 3D spaces in your mind. By mastering Mirror Imaging, Pattern Completion, and Space Visualization, you are literally restructuring your neural pathways to think faster and more accurately. This is the mental gymnasium where future innovators and problem-solvers are forged. Unleash your visual intelligence today!",
-                  topics: ["Odd-Man Out Logic", "Figure Matching", "Pattern Completion", "Figure Series Analysis", "Analogy Puzzles", "Mirror Imaging", "Paper Folding Logic", "Embedded Figures", "Space Visualization", "Geometrical Completion"] },
-                { id: 3, name: "Applied Arithmetic", icon: "fa-calculator", time: "45 MINS", 
-                  passage: "Arithmetic is the engine of the global economy! Understanding Profit & Loss, Simple Interest, and Speed-Distance relationships is the key to mastering real-world challenges. This module transforms abstract math into a high-performance toolset. Whether you are aiming for an elite Sainik School seat or preparing for a future in economics and leadership, these applied concepts are non-negotiable. Learn to calculate with surgical precision and develop the strategic mindset needed to stay ahead in the competitive race of the 21st century.",
-                  topics: ["Unitary Method", "Profit & Loss Logic", "Simple Interest Mastery", "Time & Work Dynamics", "Speed & Distance", "Percentage Basics", "Average Calculation", "Area & Perimeter", "Volume Basics", "Decimal Operations"] },
-                { id: 4, name: "Verbal Logic", icon: "fa-brain", time: "45 MINS", 
-                  passage: "Logic is the ultimate weapon of the wise. In this section, you will learn to navigate the complexities of human relationships and linguistic patterns. Mastering Direction Sense, Blood Relations, and Coding-Decoding isn't just about cracking a test—it's about developing the analytical sharpness that world-class lawyers, strategists, and executives use every day. By training your mind to identify logical fallacies and hidden connections, you become a person of high clarity and unbreakable reasoning skills.",
-                  topics: ["Coding-Decoding", "Direction Sense", "Blood Relations", "Ranking Tests", "Alphabet Series", "Number Ranking Logic", "Venn Diagrams", "Syllogism Basics", "Clock & Calendar", "Dictionary Order"] },
-                { id: 5, name: "English Grammar", icon: "fa-spell-check", time: "40 MINS", 
-                  passage: "Language is the currency of leadership. To influence the world, you must first master the structure of the world's most powerful language. This module refines your understanding of tenses, subject-verb agreement, and preposition logic, turning you into a sophisticated communicator. Flawless grammar builds immediate authority in your writing and speaking. Whether you are drafting a competitive essay or preparing for a Sainik interview, your grammatical precision will be the hallmark of your excellence. Speak with confidence, write with power!",
-                  topics: ["Parts Identification", "Adjective Degrees", "Tense Mastery", "Article Usage", "Preposition Logic", "Conjunction Mastery", "Subject-Verb Agreement", "Punctuation Rules", "Sentence Types", "Pronoun Reference"] },
-                { id: 6, name: "Reading Comprehension", icon: "fa-book-open", time: "45 MINS", 
-                  passage: "Reading is the art of deep interpretation. In a world drowning in information, the person who can retrieve facts, infer deeper meanings, and analyze character motivations is the true intellectual leader. This section develops your stamina to handle complex texts and identifies your ability to filter essential data from noise. By mastering synonym searches and inference skills, you build a high-level vocabulary and a critical mind. Every great book you read and every passage you master expands your horizon of knowledge!",
-                  topics: ["Main Idea Extraction", "Direct Retrieval", "Inference Skills", "Vocabulary Context", "Synonym Search", "Antonym Search", "Title Selection", "Sequence of Events", "Character Analysis", "Fact vs. Opinion"] },
-                { id: 7, name: "General Science", icon: "fa-microscope", time: "45 MINS", 
-                  passage: "Science is the quest to understand the mechanics of reality. From the intricate biology of human anatomy to the vast, mysterious expanses of space science, this module ignites your curiosity. Understanding simple machines and the water cycle isn't just for school—it's for becoming a person who understands how the world works. We nurture your inner scientist, encouraging you to ask 'Why?' and 'How?'. In the high-stakes intelligence papers of competitive exams, your scientific awareness will distinguish you as a candidate of high potential.",
-                  topics: ["Plant Life Cycles", "Animal Kingdom", "Human Anatomy", "Nutrition Science", "The Water Cycle", "Simple Machines", "States of Matter", "Space Science", "Health & Hygiene", "Forces & Motion"] },
-                { id: 8, name: "Static GK", icon: "fa-landmark", time: "30 MINS", 
-                  passage: "To lead a nation, you must first know its heart and heritage. General Knowledge is the hallmark of a well-rounded scholar. This section ensures you are a master of India's symbols, famous personalities, and the first milestones of our great history. A person with high GK is always the most informed person in the room. This track prepares you to dominate the general awareness sections of every prestigious scholarship and entrance exam, building a library of facts that will stay with you for a lifetime of success.",
-                  topics: ["National Symbols", "Famous Personalities", "Important Days", "Indian States & Maps", "First in India", "Awards & Honors", "World Wonders", "Books & Authors", "Sports Awareness", "Religious Sites"] },
-                { id: 9, name: "Social Studies", icon: "fa-globe-asia", time: "45 MINS", 
-                  passage: "History is the blueprint of our future, and Geography is the stage upon which we act. This module takes you through the heroic struggle for freedom, the structure of local governments, and the fascinating landforms of our planet. By understanding civic duties and ancient civilizations, you develop a sense of global identity and historical responsibility. Social Studies turns you into a citizen of the world—one who understands the roots of our society and the vast geography that connects us all. Become a scholar of humanity!",
-                  topics: ["Earth Structure", "Freedom Struggle", "Civic Duties", "Landforms & Terrain", "Climate Zones", "Transport History", "Communication Modes", "Ancient Civilizations", "Local Government", "Maps & Globes"] },
-                { id: 10, name: "Data Handling", icon: "fa-chart-bar", time: "40 MINS", 
-                  passage: "We live in the age of big data! The ability to interpret pictographs, bar graphs, and tally marks is one of the most in-demand skills in the modern professional world. This section teaches you to translate numbers into stories and visual information into actionable conclusions. Mastering statistical logic and probability prepares you for a future in data science, engineering, and high-level management. Learn to read between the lines of charts and master the logic that drives the modern information economy. The future belongs to those who master data!",
-                  topics: ["Pictograph Reading", "Bar Graphs Mastery", "Tally Marks Logic", "Table Interpretation", "Circle Graphs (Pie)", "Mean/Average Logic", "Range Discovery", "Pattern Analysis", "Recording Data", "Probability Basics"] }
-            ];
-
-            const monthsData = ["JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER", "JANUARY", "FEBRUARY", "MARCH"];
-
-            subjectsData.forEach(sub => {
-                document.write(`
-                <div class="subject-pane">
-                    <div class="sub-head-row">
-                        <i class="fa-solid ${sub.icon}"></i>
-                        <h3>${sub.id}. ${sub.name}</h3>
-                    </div>
-                    <div class="sub-inspiration">${sub.passage}</div>
-                `);
-                
-                sub.topics.forEach((topic, idx) => {
-                    document.write(`
-                    <div class="item-row">
-                        <div class="item-top">
-                            <span class="item-month">${monthsData[idx]}</span>
-                            <div class="item-meta">
-                                <span><i class="fa-solid fa-clock"></i> ${sub.time}</span>
-                                <span><i class="fa-solid fa-file-alt"></i> 30 QS</span>
-                                <span><i class="fa-solid fa-star"></i> 30 MARKS</span>
-                            </div>
-                            <div class="item-scores">
-                                <span class="score-lbl">Attempts:</span>
-                                <div class="box-grid">
-                                    <div class="box-unit scored">${idx === 0 ? '28' : '--'}</div>
-                                    <div class="box-unit">--</div>
-                                    <div class="box-unit">--</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item-bottom">
-                            <div class="item-topic-name"><span>Topic:</span> ${topic}</div>
-                            <a href="#" class="btn-take">Take Test</a>
-                        </div>
-                    </div>`);
-                });
-                
-                document.write(`</div>`);
-            });
-        </script>
+    <div class="page-header">
+        <h1>S.V.T.C. ONLINE TEST PORTAL</h1>
     </div>
+
+    <div id="subjects-container"></div>
 </main>
+
+<!-- FULL SCREEN MODAL -->
+<div id="exam-overlay">
+    <div class="exam-container">
+        <div class="exam-header">
+            <h2 id="modal-topic-title">Loading...</h2>
+            <div class="timer-container">
+                <div id="timer-group" class="timer-box">
+                    <div class="digit" id="m1">0</div>
+                    <div class="digit" id="m2">0</div>
+                    <div class="timer-sep">:</div>
+                    <div class="digit" id="s1">0</div>
+                    <div class="digit" id="s2">0</div>
+                </div>
+                <span class="close-btn" onclick="confirmClose()">&times;</span>
+            </div>
+        </div>
+        <div id="modal-body" class="exam-content"></div>
+    </div>
+</div>
+
+<script>
+    const API_URL = "https://script.google.com/macros/s/AKfycbxJpqsKOrkKLD2k40wip1hH0IJ0h2VFTz6VTFjPRmYcLTo2mPrBEv-meBWoGe05CbPT/exec";
+
+    const subjectsData = [
+        { id: 1, name: "Number Systems", icon: "fa-hashtag", time: "45 MINS", 
+          passage: "Numbers are the fundamental vocabulary of the universe! From basic counting to advanced calculations, mastering Number Systems is the first step toward mathematical excellence. Dive deep into place values, logic, and patterns.",
+          topics: ["Place Value Mastery", "Number Types & Logic", "Roman Numerals", "Rounding Off Rules", "Successor & Predecessor", "Expanded Form Mastery", "Number Comparison", "Digit Formation Puzzles", "Fundamental Arithmetic Rules", "Divisibility Tests"] },
+        { id: 2, name: "Mental Ability", icon: "fa-eye", time: "60 MINS", 
+          passage: "Mental Ability is the ultimate test of your cognitive agility and logical reasoning. These challenges improve focus, visual analysis, and pattern recognition skills essential for competitive excellence.",
+          topics: ["Odd-Man Out Logic", "Figure Matching", "Pattern Completion", "Figure Series Analysis", "Analogy Puzzles", "Mirror Imaging", "Paper Folding Logic", "Embedded Figures", "Space Visualization", "Geometrical Completion"] },
+        { id: 3, name: "Applied Arithmetic", icon: "fa-calculator", time: "45 MINS", 
+          passage: "Arithmetic powers the real world! From profit-loss in business to average calculations in sports, this section prepares you to solve real-life mathematical challenges with speed and accuracy.",
+          topics: ["Unitary Method", "Profit & Loss Logic", "Simple Interest Mastery", "Time & Work Dynamics", "Speed & Distance", "Percentage Basics", "Average Calculation", "Area & Perimeter", "Volume Basics", "Decimal Operations"] },
+        { id: 4, name: "Verbal Logic", icon: "fa-brain", time: "45 MINS", 
+          passage: "Logic is the language of wisdom. Verbal reasoning helps you decipher complex relationships, directions, and codes, sharpening your decision-making and analytical thinking capabilities.",
+          topics: ["Coding-Decoding", "Direction Sense", "Blood Relations", "Ranking Tests", "Alphabet Series", "Number Ranking Logic", "Venn Diagrams", "Syllogism Basics", "Clock & Calendar", "Dictionary Order"] },
+        { id: 5, name: "English Grammar", icon: "fa-spell-check", time: "40 MINS", 
+          passage: "Strong communication starts with perfect grammar. Mastering rules of language ensures clarity, confidence, and leadership in every conversation and written expression.",
+          topics: ["Parts Identification", "Adjective Degrees", "Tense Mastery", "Article Usage", "Preposition Logic", "Conjunction Mastery", "Subject-Verb Agreement", "Punctuation Rules", "Sentence Types", "Pronoun Reference"] },
+        { id: 6, name: "Reading Comprehension", icon: "fa-book-open", time: "45 MINS", 
+          passage: "Reading is the art of deep interpretation. This section focuses on your ability to extract meaning, infer facts, and understand context from complex textual passages.",
+          topics: ["Main Idea Extraction", "Direct Retrieval", "Inference Skills", "Vocabulary Context", "Synonym Search", "Antonym Search", "Title Selection", "Sequence of Events", "Character Analysis", "Fact vs. Opinion"] },
+        { id: 7, name: "General Science", icon: "fa-microscope", time: "45 MINS", 
+          passage: "Science is the quest to understand reality. Explore the mechanics of life, force, motion, and the environment through observation and logical conclusion.",
+          topics: ["Plant Life Cycles", "Animal Kingdom", "Human Anatomy", "Nutrition Science", "The Water Cycle", "Simple Machines", "States of Matter", "Space Science", "Health & Hygiene", "Forces & Motion"] },
+        { id: 8, name: "Static GK", icon: "fa-landmark", time: "30 MINS", 
+          passage: "Knowledge is power. General awareness about your country's heritage, personalities, and world wonders builds a strong foundation for a global perspective.",
+          topics: ["National Symbols", "Famous Personalities", "Important Days", "Indian States & Maps", "First in India", "Awards & Honors", "World Wonders", "Books & Authors", "Sports Awareness", "Religious Sites"] },
+        { id: 9, name: "Social Studies", icon: "fa-globe-asia", time: "45 MINS", 
+          passage: "Understand the world we live in. From the history of freedom struggles to the structure of our government and the geography of the earth.",
+          topics: ["Earth Structure", "Freedom Struggle", "Civic Duties", "Landforms & Terrain", "Climate Zones", "Transport History", "Communication Modes", "Ancient Civilizations", "Local Government", "Maps & Globes"] },
+        { id: 10, name: "Data Handling", icon: "fa-chart-bar", time: "40 MINS", 
+          passage: "Data is the gold of the digital age. Learn to interpret charts, graphs, and tally marks to visualize information and make data-driven decisions.",
+          topics: ["Pictograph Reading", "Bar Graphs Mastery", "Tally Marks Logic", "Table Interpretation", "Circle Graphs (Pie)", "Mean/Average Logic", "Range Discovery", "Pattern Analysis", "Recording Data", "Probability Basics"] }
+    ];
+
+    const monthsData = ["JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER", "JANUARY", "FEBRUARY", "MARCH"];
+    
+    // UI Rendering Logic
+    const container = document.getElementById('subjects-container');
+    subjectsData.forEach(sub => {
+        let subjectHtml = `
+            <div class="subject-pane">
+                <div class="sub-head-row">
+                    <i class="fa-solid ${sub.icon}"></i>
+                    <h3>${sub.id}. ${sub.name}</h3>
+                </div>
+                <div class="sub-inspiration">${sub.passage}</div>
+        `;
+
+        sub.topics.forEach((topic, idx) => {
+            const sheetName = `3S${sub.id}T${idx + 1}`;
+            subjectHtml += `
+                <div class="item-row">
+                    <div class="item-top">
+                        <span class="item-month">${monthsData[idx]}</span>
+                        <div class="item-meta">
+                            <span><i class="fa-clock"></i> ${sub.time}</span>
+                            <span><i class="fa-file-alt"></i> 10 QS</span>
+                        </div>
+                        <div class="item-scores">
+                            <div class="box-grid">
+                                <div class="box-unit">--</div>
+                                <div class="box-unit">--</div>
+                                <div class="box-unit">--</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-bottom">
+                        <div class="item-topic-name"><span>Topic:</span> ${topic}</div>
+                        <button onclick="openExam('${sheetName}', '${topic}', '${sub.time}')" class="btn-take">Take Test</button>
+                    </div>
+                </div>`;
+        });
+        subjectHtml += `</div>`;
+        container.innerHTML += subjectHtml;
+    });
+
+    let currentQuestions = [];
+    let userSelections = {};
+    let timerInterval = null;
+    let secondsLeft = 0;
+
+    async function openExam(sheetName, topic, durationStr) {
+        document.getElementById('exam-overlay').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        document.getElementById('modal-topic-title').innerText = topic;
+        document.getElementById('modal-body').innerHTML = `<div style="text-align:center; padding-top:100px;"><i class="fas fa-circle-notch fa-spin" style="font-size:40px; color:#00008B;"></i><p style="margin-top:15px; font-weight:700;">Loading Questions...</p></div>`;
+        
+        userSelections = {};
+        
+        // Setup Timer from Duration String
+        const mins = parseInt(durationStr);
+        secondsLeft = mins * 60;
+        updateTimerDisplay();
+
+        try {
+            const response = await fetch(`${API_URL}?action=getQuestions&sheetName=${sheetName}`);
+            const data = await response.json();
+            if (data.error) throw new Error(data.error);
+            currentQuestions = data; 
+            renderQuestions();
+            startTimer();
+        } catch (error) {
+            document.getElementById('modal-body').innerHTML = `<p style="color:red; text-align:center; padding-top:50px;">Error: ${error.message}</p>`;
+        }
+    }
+
+    function renderQuestions() {
+        let html = '';
+        currentQuestions.forEach((q, qIdx) => {
+            html += `
+                <div class="question-card">
+                    <span class="q-id">Question ID: ${q.id}</span>
+                    <span class="q-text">${qIdx + 1}. ${q.question}</span>
+                    <div class="options-list">
+                        ${q.options.map((opt, oIdx) => `
+                            <div class="option-item" id="q${qIdx}o${oIdx}" onclick="selectOption(${qIdx}, ${oIdx}, '${opt}')">
+                                ${String.fromCharCode(65 + oIdx)}. ${opt}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        });
+        // Submit Button at the end
+        html += `
+            <div class="submit-area">
+                <button class="btn-submit" onclick="submitTest()">Submit Exam</button>
+            </div>
+        `;
+        document.getElementById('modal-body').innerHTML = html;
+    }
+
+    function selectOption(qIdx, oIdx, val) {
+        const count = currentQuestions[qIdx].options.length;
+        for(let i=0; i<count; i++) document.getElementById(`q${qIdx}o${i}`).classList.remove('selected');
+        document.getElementById(`q${qIdx}o${oIdx}`).classList.add('selected');
+        userSelections[qIdx] = val;
+    }
+
+    function startTimer() {
+        clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+            secondsLeft--;
+            updateTimerDisplay();
+            if (secondsLeft <= 300) document.getElementById('timer-group').classList.add('timer-urgent');
+            if (secondsLeft <= 0) { clearInterval(timerInterval); submitTest(true); }
+        }, 1000);
+    }
+
+    function updateTimerDisplay() {
+        const m = Math.floor(secondsLeft / 60);
+        const s = secondsLeft % 60;
+        const mStr = m.toString().padStart(2, '0');
+        const sStr = s.toString().padStart(2, '0');
+        document.getElementById('m1').innerText = mStr[0];
+        document.getElementById('m2').innerText = mStr[1];
+        document.getElementById('s1').innerText = sStr[0];
+        document.getElementById('s2').innerText = sStr[1];
+    }
+
+    function submitTest(isAuto = false) {
+        clearInterval(timerInterval);
+        let score = 0;
+        currentQuestions.forEach((q, idx) => {
+            if (userSelections[idx] === q.correctAnswer) score++;
+        });
+
+        document.getElementById('modal-body').innerHTML = `
+            <div class="result-screen">
+                <div class="score-circle"><span class="score-val">${score}/${currentQuestions.length}</span></div>
+                <h2 style="color:var(--primary); font-weight:900;">TEST COMPLETED!</h2>
+                <p style="margin:10px 0; color:#64748b;">${isAuto ? 'Time is up! Your answers were saved.' : 'Great effort! Your results are ready.'}</p>
+                <button class="btn-review" onclick="viewReview()" style="background:var(--primary); color:white; border:none; padding:12px 40px; border-radius:50px; font-weight:800; margin-top:15px; cursor:pointer;">Review Answers</button>
+                <br>
+                <button onclick="closeExam()" style="margin-top:20px; background:none; border:none; color:#64748b; font-weight:800; cursor:pointer;">Back to Dashboard</button>
+            </div>
+        `;
+        document.getElementById('modal-body').parentElement.scrollTo(0,0);
+    }
+
+    function viewReview() {
+        let html = `<h2 style="text-align:center; margin-bottom:30px; font-weight:900;">REVIEW REPORT</h2>`;
+        currentQuestions.forEach((q, idx) => {
+            const userAns = userSelections[idx] || 'Not Answered';
+            const isCorrect = userAns === q.correctAnswer;
+            html += `
+                <div class="review-card">
+                    <span class="q-id">ID: ${q.id}</span>
+                    <div class="q-text">${idx + 1}. ${q.question}</div>
+                    <div style="font-size:14px;">User Choice: <span style="font-weight:800; color:${isCorrect ? 'var(--success)' : 'var(--danger)'}">${userAns}</span></div>
+                    ${!isCorrect ? `<div style="font-size:14px; margin-top:5px;">Correct Answer: <span style="font-weight:800; color:var(--success)">${q.correctAnswer}</span></div>` : ''}
+                    <div class="explanation-box">
+                        <strong>EXPLANATION:</strong><br>${q.explanation || 'Detailed explanation not provided for this item.'}
+                    </div>
+                </div>
+            `;
+        });
+        document.getElementById('modal-body').innerHTML = html;
+        document.getElementById('modal-body').parentElement.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function confirmClose() {
+        if(confirm("Exit the test? Your current progress will be lost.")) closeExam();
+    }
+
+    function closeExam() {
+        clearInterval(timerInterval);
+        document.getElementById('exam-overlay').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+</script>
 
 </body>
 </html>
