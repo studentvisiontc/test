@@ -6,157 +6,179 @@
     <link rel="icon" type="image/png" href="https://studentvisiontc.github.io/SVTC-Images/SV%20Circle%20logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>S.V.T.C. Professional Test Portal</title>
     <style>
         :root {
             --primary: #00008B;
             --accent: #ffa500;
-            --bg: #f8fafc;
+            --bg: #ffffff;
             --text: #0f172a;
             --border: #e2e8f0;
             --success: #10b981;
             --danger: #ef4444;
             --card-bg: #ffffff;
+            --light-blue: #f0f9ff;
         }
 
-        * { font-family: 'Inter', sans-serif; box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
+        * { font-family: 'Roboto Slab', serif; box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; text-align: left; }
 
-        /* Main Layout */
-        main { width: 100%; max-width: 1200px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 50px rgba(0,0,0,0.05); }
-
-        .page-header { padding: 40px 20px; text-align: center; background: linear-gradient(to right, #00008B, #0000cd); color: white; }
-        .page-header h1 { font-size: 28px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
+        /* Full Width Layout */
+        main { width: 100%; padding: 10px 15px; background: white; min-height: 100vh; }
 
         /* Subject Section */
-        .subject-pane { padding: 30px 20px; border-bottom: 8px solid var(--bg); }
-        .sub-head-row { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
-        .sub-head-row i { font-size: 24px; color: var(--accent); }
-        .sub-head-row h3 { font-size: 22px; font-weight: 800; color: var(--primary); }
+        .subject-pane { padding: 30px 0; border-bottom: 3px solid #f1f5f9; text-align: left; }
+        .sub-head-row { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .sub-head-row i { font-size: 26px; color: var(--accent); }
+        .sub-head-row h3 { font-size: 28px; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px; }
         
         .sub-inspiration { 
-            padding: 15px; font-size: 13.5px; line-height: 1.6; color: #475569; 
-            background: #f1f5f9; border-radius: 8px; border-left: 4px solid var(--accent); 
-            margin-bottom: 20px; text-align: justify;
+            padding: 10px 0 25px 0; font-size: 16px; line-height: 1.8; color: #475569; 
+            text-align: left; font-weight: 400;
         }
 
-        /* Compact Item Row */
+        /* Full Width Item Row */
         .item-row { 
             display: flex; flex-direction: column; background: white; 
-            border: 1px solid var(--border); border-radius: 8px; 
-            margin-bottom: 8px; overflow: hidden; transition: 0.2s;
+            border: 1px solid var(--border); border-radius: 10px; 
+            margin-bottom: 12px; overflow: hidden; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%; 
         }
-        .item-row:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .item-row:hover { border-color: var(--primary); box-shadow: 0 10px 20px rgba(0,0,139,0.08); transform: translateY(-2px); }
 
         .item-top { 
             display: flex; align-items: center; justify-content: space-between; 
-            padding: 8px 15px; background: #fafafa; border-bottom: 1px solid #f1f5f9;
+            padding: 12px 20px; background: #fafafa; border-bottom: 1px solid #f1f5f9;
+            flex-wrap: wrap; gap: 10px;
         }
-        .item-month { font-size: 10px; font-weight: 900; color: var(--danger); width: 80px; }
-        .item-meta { display: flex; gap: 10px; flex: 1; }
-        .item-meta span { font-size: 9px; font-weight: 700; color: var(--primary); background: #eef2ff; padding: 2px 8px; border-radius: 4px; }
+        .item-month { font-size: 12px; font-weight: 900; color: var(--danger); width: 100px; text-transform: uppercase; }
+        .item-meta { display: flex; gap: 15px; flex: 1; justify-content: flex-start; flex-wrap: wrap; }
+        .item-meta span { font-size: 11px; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 6px; }
+        .item-meta i { font-size: 12px; color: var(--accent); }
         
-        .item-scores { display: flex; align-items: center; gap: 5px; }
-        .box-grid { display: flex; gap: 3px; }
-        .box-unit { width: 24px; height: 20px; border: 1px solid var(--border); border-radius: 3px; font-size: 9px; font-weight: 800; display: flex; align-items: center; justify-content: center; background: white; }
+        .item-scores { display: flex; align-items: center; gap: 12px; }
+        .box-grid { display: flex; gap: 5px; }
+        .box-unit { width: 32px; height: 26px; border: 1.5px solid var(--border); border-radius: 5px; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; background: white; color: var(--primary); }
+        .score-lbl { font-size: 12px; font-weight: 900; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px; }
 
-        .item-bottom { padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; background: #f0f9ff; }
-        .item-topic-name { font-size: 13px; font-weight: 700; color: #334155; }
-        .item-topic-name span { color: var(--primary); font-size: 11px; text-transform: uppercase; margin-right: 5px; }
+        .item-bottom { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border-top: 1px solid #e2e8f0; }
+        .item-topic-name { font-size: 15px; font-weight: 700; color: #1e293b; }
+        .item-topic-name span { color: var(--primary); font-size: 12px; text-transform: uppercase; margin-right: 8px; opacity: 0.7; }
         
         .btn-take { 
-            background: var(--primary); color: white; border: none; padding: 6px 15px; 
-            border-radius: 4px; font-size: 10px; font-weight: 800; text-transform: uppercase; 
-            cursor: pointer; transition: 0.2s;
+            background: var(--primary); color: white; border: none; padding: 10px 25px; 
+            border-radius: 6px; font-size: 12px; font-weight: 800; text-transform: uppercase; 
+            cursor: pointer; transition: 0.2s; box-shadow: 0 4px 6px rgba(0,0,139,0.2);
         }
-        .btn-take:hover { background: #0000cc; transform: translateY(-1px); }
+        .btn-take:hover { background: #0000cc; transform: scale(1.05); }
 
-        /* Full Screen Stylish Modal */
+        /* Full Screen Exam Modal */
         #exam-overlay { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(15, 23, 42, 0.95); display: none; z-index: 9999; 
-            backdrop-filter: blur(10px); 
+            background: rgba(15, 23, 42, 0.98); display: none; z-index: 9999; 
+            backdrop-filter: blur(20px); 
         }
-        .exam-container { 
-            width: 100%; height: 100%; display: flex; flex-direction: column; 
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-        }
+        .exam-container { width: 100%; height: 100%; display: flex; flex-direction: column; background: white; }
+        
         .exam-header { 
-            background: white; padding: 10px 20px; display: flex; 
+            background: white; padding: 12px 30px; display: flex; 
             justify-content: space-between; align-items: center; 
-            border-bottom: 2px solid var(--primary); position: sticky; top: 0; z-index: 100;
+            border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100;
         }
-        .exam-header h2 { font-size: 16px; color: var(--primary); font-weight: 800; max-width: 50%; }
+        .exam-header h2 { font-size: 15px; color: #475569; font-weight: 600; font-style: italic; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 40%; }
 
-        /* Stylish 4-Box Timer */
+        /* Stylish Smaller 4-Box Timer */
+        .timer-wrapper { display: flex; align-items: center; gap: 10px; }
+        .timer-label { font-size: 12px; font-weight: 800; color: var(--primary); text-transform: uppercase; }
         .timer-container { display: flex; align-items: center; gap: 4px; }
-        .timer-box { 
-            display: flex; gap: 2px; background: #1e293b; padding: 4px; border-radius: 4px;
-        }
+        .timer-box { display: flex; gap: 2px; background: #0f172a; padding: 4px; border-radius: 6px; }
         .digit { 
-            width: 24px; height: 32px; background: #334155; color: white; 
+            width: 22px; height: 30px; background: #334155; color: white; 
             display: flex; align-items: center; justify-content: center; 
-            font-size: 18px; font-weight: 900; border-radius: 3px;
+            font-size: 16px; font-weight: 900; border-radius: 4px;
         }
-        .timer-sep { color: #1e293b; font-weight: 900; font-size: 20px; }
+        .timer-sep { color: #0f172a; font-weight: 900; font-size: 18px; margin: 0 2px; line-height: 30px; }
         .timer-urgent .digit { background: var(--danger); animation: pulse 1s infinite; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
 
-        .close-btn { font-size: 24px; cursor: pointer; color: #64748b; font-weight: bold; margin-left: 15px; }
+        .close-btn { font-size: 30px; cursor: pointer; color: #94a3b8; font-weight: bold; margin-left: 20px; transition: 0.2s; }
+        .close-btn:hover { color: var(--danger); }
 
-        /* Exam Content & Question Styles */
-        .exam-content { padding: 30px clamp(15px, 5vw, 100px); flex: 1; overflow-y: auto; }
+        /* Exam Content */
+        .exam-content { padding: 40px clamp(20px, 10vw, 150px); flex: 1; overflow-y: auto; text-align: left; background: #fbfcfd; }
         .question-card { 
-            background: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; 
-            border: 1px solid var(--border); box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            background: white; padding: 30px; border-radius: 15px; margin-bottom: 30px; 
+            border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
-        .q-id { color: var(--accent); font-size: 11px; font-weight: 800; margin-bottom: 5px; display: block; }
-        .q-text { font-size: 16px; font-weight: 700; margin-bottom: 15px; line-height: 1.5; }
-        .options-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .q-id { color: var(--accent); font-size: 12px; font-weight: 800; margin-bottom: 10px; display: block; }
+        .q-text { font-size: 19px; font-weight: 700; margin-bottom: 25px; line-height: 1.7; color: var(--text); }
+        .options-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .option-item { 
-            padding: 12px; border: 1.5px solid var(--border); border-radius: 8px; 
-            cursor: pointer; font-size: 14px; font-weight: 600; transition: 0.2s;
+            padding: 18px; border: 2px solid var(--border); border-radius: 12px; 
+            cursor: pointer; font-size: 16px; font-weight: 600; transition: 0.2s;
+            display: flex; align-items: center;
         }
-        .option-item:hover { background: #f0f9ff; border-color: var(--primary); }
+        .option-item:hover { background: var(--light-blue); border-color: var(--primary); }
         .option-item.selected { background: var(--primary); color: white; border-color: var(--primary); }
         
-        /* Submit Button at the end of questions */
-        .submit-area { text-align: center; padding: 40px 0; }
+        /* Footer Buttons */
+        .footer-action-area { text-align: center; padding: 50px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .btn-submit { 
-            background: var(--success); color: white; border: none; padding: 15px 60px; 
-            border-radius: 50px; font-weight: 900; cursor: pointer; font-size: 16px; 
-            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2); transition: 0.3s;
+            background: var(--success); color: white; border: none; padding: 18px 60px; 
+            border-radius: 50px; font-weight: 900; cursor: pointer; font-size: 18px; 
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); transition: 0.3s;
         }
-        .btn-submit:hover { transform: scale(1.05); background: #059669; }
+        .btn-submit:hover { transform: scale(1.05); }
+        .btn-close-test { 
+            background: #64748b; color: white; border: none; padding: 18px 40px; 
+            border-radius: 50px; font-weight: 900; cursor: pointer; font-size: 18px;
+        }
 
-        /* Result & Review */
-        .result-screen { text-align: center; padding: 50px 20px; }
+        /* Result & Score Feedback */
+        .result-screen { text-align: center; padding: 60px 20px; max-width: 600px; margin: 0 auto; }
         .score-circle { 
-            width: 140px; height: 140px; border-radius: 50%; border: 8px solid var(--success); 
+            width: 180px; height: 180px; border-radius: 50%; border: 12px solid var(--success); 
             display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            margin: 0 auto 20px; background: white;
+            margin: 0 auto 30px; background: white; box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
-        .score-val { font-size: 36px; font-weight: 900; color: var(--success); }
-        .review-card { background: white; padding: 20px; border-radius: 12px; margin-bottom: 15px; text-align: left; border: 1px solid var(--border); }
-        .explanation-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: 12px; font-size: 13px; margin-top: 12px; color: #92400e; }
+        .score-val { font-size: 50px; font-weight: 900; color: var(--success); }
+        .feedback-text { font-size: 24px; font-weight: 800; margin-bottom: 10px; }
+        .feedback-msg { font-size: 16px; color: #64748b; margin-bottom: 40px; }
+
+        .result-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
+        .btn-res-action { 
+            padding: 15px 35px; border-radius: 50px; font-weight: 800; cursor: pointer; border: none; font-size: 15px; transition: 0.2s;
+        }
+        .btn-res-review { background: var(--primary); color: white; }
+        .btn-res-close { background: #f1f5f9; color: #475569; }
+
+        /* Review Stylish Cards */
+        .review-card { background: white; padding: 30px; border-radius: 20px; margin-bottom: 25px; text-align: left; border: 1.5px solid var(--border); box-shadow: 0 5px 15px rgba(0,0,0,0.02); }
+        .review-status { display: inline-block; padding: 4px 12px; border-radius: 50px; font-size: 11px; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; }
+        .status-correct { background: #d1fae5; color: #065f46; }
+        .status-wrong { background: #fee2e2; color: #991b1b; }
+        .ans-correct { color: var(--success); font-weight: 800; }
+        .ans-wrong { color: var(--danger); font-weight: 800; text-decoration: line-through; }
+        .explanation-box { background: #fffbeb; border-left: 6px solid var(--accent); padding: 20px; font-size: 15px; margin-top: 20px; color: #92400e; border-radius: 0 15px 15px 0; line-height: 1.6; }
 
         @media (max-width: 768px) {
             .options-list { grid-template-columns: 1fr; }
-            .item-top { flex-wrap: wrap; }
-            .item-month { width: 100%; margin-bottom: 5px; }
-            .exam-content { padding: 20px 15px; }
+            .item-top { flex-direction: column; align-items: flex-start; }
+            .item-meta { width: 100%; flex-direction: column; gap: 8px; }
+            .exam-content { padding: 30px 15px; }
+            .result-buttons { flex-direction: column; }
+            .timer-label { display: none; }
+            .footer-action-area { gap: 10px; }
+            .btn-submit { width: 100%; padding: 15px; }
+            .btn-close-test { width: 100%; padding: 15px; }
         }
     </style>
 </head>
 <body>
 
 <main>
-    <div class="page-header">
-        <h1>S.V.T.C. ONLINE TEST PORTAL</h1>
-    </div>
-
     <div id="subjects-container"></div>
 </main>
 
@@ -164,14 +186,17 @@
 <div id="exam-overlay">
     <div class="exam-container">
         <div class="exam-header">
-            <h2 id="modal-topic-title">Loading...</h2>
-            <div class="timer-container">
-                <div id="timer-group" class="timer-box">
-                    <div class="digit" id="m1">0</div>
-                    <div class="digit" id="m2">0</div>
-                    <div class="timer-sep">:</div>
-                    <div class="digit" id="s1">0</div>
-                    <div class="digit" id="s2">0</div>
+            <h2 id="modal-topic-title">Loading Topic...</h2>
+            <div class="timer-wrapper">
+                <span class="timer-label">Time Remaining:</span>
+                <div class="timer-container">
+                    <div id="timer-group" class="timer-box">
+                        <div class="digit" id="m1">0</div>
+                        <div class="digit" id="m2">0</div>
+                        <div class="timer-sep">:</div>
+                        <div class="digit" id="s1">0</div>
+                        <div class="digit" id="s2">0</div>
+                    </div>
                 </div>
                 <span class="close-btn" onclick="confirmClose()">&times;</span>
             </div>
@@ -185,34 +210,34 @@
 
     const subjectsData = [
         { id: 1, name: "Number Systems", icon: "fa-hashtag", time: "45 MINS", 
-          passage: "Numbers are the fundamental vocabulary of the universe! From basic counting to advanced calculations, mastering Number Systems is the first step toward mathematical excellence. Dive deep into place values, logic, and patterns.",
+          passage: "Numbers are the secret language of the universe! By mastering Number Systems, you learn how to handle data like a professional, building a rock-solid logical foundation for your future. This skill is vital for high-paying jobs like Data Science, Financial Accounting, and Software Architecture. As you learn to play with millions, your brain becomes incredibly precise and organized, helping you solve massive real-world problems with lightning speed.",
           topics: ["Place Value Mastery", "Number Types & Logic", "Roman Numerals", "Rounding Off Rules", "Successor & Predecessor", "Expanded Form Mastery", "Number Comparison", "Digit Formation Puzzles", "Fundamental Arithmetic Rules", "Divisibility Tests"] },
-        { id: 2, name: "Mental Ability", icon: "fa-eye", time: "60 MINS", 
-          passage: "Mental Ability is the ultimate test of your cognitive agility and logical reasoning. These challenges improve focus, visual analysis, and pattern recognition skills essential for competitive excellence.",
+        { id: 2, name: "Mental Ability", icon: "fa-eye", time: "45 MINS", 
+          passage: "Mental Ability is the ultimate gym for your superstar brain! It trains your mind to spot hidden patterns and visual secrets in seconds, boosting your visual intelligence and quick decision-making. These powers are essential for future Intelligence Officers, Creative Game Designers, and High-Tech Strategy Specialists. Every puzzle you solve here makes your mind sharper and faster, ensuring you stay several steps ahead in any career that requires out-of-the-box thinking.",
           topics: ["Odd-Man Out Logic", "Figure Matching", "Pattern Completion", "Figure Series Analysis", "Analogy Puzzles", "Mirror Imaging", "Paper Folding Logic", "Embedded Figures", "Space Visualization", "Geometrical Completion"] },
         { id: 3, name: "Applied Arithmetic", icon: "fa-calculator", time: "45 MINS", 
-          passage: "Arithmetic powers the real world! From profit-loss in business to average calculations in sports, this section prepares you to solve real-life mathematical challenges with speed and accuracy.",
+          passage: "Applied Arithmetic is where math meets the real, exciting world! Learning how money, speed, and resources work in action prepares you to lead global businesses and manage massive projects. This practice is the key for future Successful Entrepreneurs, Civil Engineers, and top-tier CEOs. Mastering these calculations builds your practical problem-solving skills, turning you into a confident leader who can build anything and manage resources with perfect mathematical accuracy.",
           topics: ["Unitary Method", "Profit & Loss Logic", "Simple Interest Mastery", "Time & Work Dynamics", "Speed & Distance", "Percentage Basics", "Average Calculation", "Area & Perimeter", "Volume Basics", "Decimal Operations"] },
         { id: 4, name: "Verbal Logic", icon: "fa-brain", time: "45 MINS", 
-          passage: "Logic is the language of wisdom. Verbal reasoning helps you decipher complex relationships, directions, and codes, sharpening your decision-making and analytical thinking capabilities.",
+          passage: "Verbal Logic is the art of thinking like a master strategist! It helps you understand deep connections between ideas, sharpening your analytical mind and making your communication crystal clear. This subject is the perfect training ground for future Lawyers, Management Consultants, and Crisis Managers. By practicing logical reasoning, your brain learns to filter through confusion and find the absolute truth, giving you a powerful voice that world-leading organizations listen to and follow.",
           topics: ["Coding-Decoding", "Direction Sense", "Blood Relations", "Ranking Tests", "Alphabet Series", "Number Ranking Logic", "Venn Diagrams", "Syllogism Basics", "Clock & Calendar", "Dictionary Order"] },
         { id: 5, name: "English Grammar", icon: "fa-spell-check", time: "40 MINS", 
-          passage: "Strong communication starts with perfect grammar. Mastering rules of language ensures clarity, confidence, and leadership in every conversation and written expression.",
+          passage: "Grammar is the instruction manual that helps you build a magnificent castle of words! Masterful communication allows you to express your big ideas so clearly that everyone stops to listen. This skill is vital for future International Diplomats, best-selling Authors, and Motivational Leaders who need to influence millions. Every rule you master builds your inner confidence, turning you into a polished communicator who can tell stories that move people and change the world for the better.",
           topics: ["Parts Identification", "Adjective Degrees", "Tense Mastery", "Article Usage", "Preposition Logic", "Conjunction Mastery", "Subject-Verb Agreement", "Punctuation Rules", "Sentence Types", "Pronoun Reference"] },
         { id: 6, name: "Reading Comprehension", icon: "fa-book-open", time: "45 MINS", 
-          passage: "Reading is the art of deep interpretation. This section focuses on your ability to extract meaning, infer facts, and understand context from complex textual passages.",
+          passage: "Reading is a magic portal to travel anywhere in time and space! Comprehension is the golden key that lets you understand the deepest meaning of every message, building incredible empathy and critical wisdom. These skills are essential for top-tier Researchers, Analysts, and Investigative Journalists. As you understand complex ideas, your mind becomes a wise library, helping you navigate difficult situations and understand human behavior better than anyone else in your field.",
           topics: ["Main Idea Extraction", "Direct Retrieval", "Inference Skills", "Vocabulary Context", "Synonym Search", "Antonym Search", "Title Selection", "Sequence of Events", "Character Analysis", "Fact vs. Opinion"] },
         { id: 7, name: "General Science", icon: "fa-microscope", time: "45 MINS", 
-          passage: "Science is the quest to understand reality. Explore the mechanics of life, force, motion, and the environment through observation and logical conclusion.",
+          passage: "Science is the grand adventure of discovering how the entire universe works! It nurtures your natural curiosity to understand life, space, and energy like a true explorer. This subject is the launchpad for future Doctors, Aerospace Engineers, and Scientific Pioneers who will discover new cures and explore unknown planets. By asking 'How?' and 'Why?', your brain becomes an engine of discovery, teaching you to solve environmental problems and keep our world healthy and vibrant.",
           topics: ["Plant Life Cycles", "Animal Kingdom", "Human Anatomy", "Nutrition Science", "The Water Cycle", "Simple Machines", "States of Matter", "Space Science", "Health & Hygiene", "Forces & Motion"] },
         { id: 8, name: "Static GK", icon: "fa-landmark", time: "30 MINS", 
-          passage: "Knowledge is power. General awareness about your country's heritage, personalities, and world wonders builds a strong foundation for a global perspective.",
+          passage: "General Knowledge is the bridge that connects you to history and the wide global family! Knowing about heroes, national heritage, and world wonders builds immense pride and a broad global perspective. This foundation is essential for future Civil Servants, World Historians, and Top Administrative Leaders who serve their country with wisdom. Every fact you learn here adds a new lens to your eyes, helping you understand world events and preparing you for a life of global influence and leadership.",
           topics: ["National Symbols", "Famous Personalities", "Important Days", "Indian States & Maps", "First in India", "Awards & Honors", "World Wonders", "Books & Authors", "Sports Awareness", "Religious Sites"] },
         { id: 9, name: "Social Studies", icon: "fa-globe-asia", time: "45 MINS", 
-          passage: "Understand the world we live in. From the history of freedom struggles to the structure of our government and the geography of the earth.",
+          passage: "Social Studies is the story of how humanity lives and grows together in harmony! It teaches you about communities, civic responsibility, and the struggles of our ancestors, growing you into a responsible world leader. These lessons are the root for future Social Policy Makers, Urban Planners, and Administrative Officers who bring positive change. By understanding our shared past and present, your mind learns the value of cooperation and justice, making you a person who knows exactly how to help everyone thrive.",
           topics: ["Earth Structure", "Freedom Struggle", "Civic Duties", "Landforms & Terrain", "Climate Zones", "Transport History", "Communication Modes", "Ancient Civilizations", "Local Government", "Maps & Globes"] },
-        { id: 10, name: "Data Handling", icon: "fa-chart-bar", time: "40 MINS", 
-          passage: "Data is the gold of the digital age. Learn to interpret charts, graphs, and tally marks to visualize information and make data-driven decisions.",
+        { id: 10, name: "Data Handling", icon: "fa-chart-bar", time: "45 MINS", 
+          passage: "We live in an age of big data, and handling it is like having a real-life superpower! Learning to organize information into charts and graphs teaches you how to visualize truth and make smart, fact-based choices every day. This skill is critical for future AI Specialists, Statistics Experts, and Business Strategy Analysts who drive the modern economy. Every chart you read sharpens your ability to filter through the noise and see the core facts, ensuring you always make the most intelligent decisions in your future high-tech career.",
           topics: ["Pictograph Reading", "Bar Graphs Mastery", "Tally Marks Logic", "Table Interpretation", "Circle Graphs (Pie)", "Mean/Average Logic", "Range Discovery", "Pattern Analysis", "Recording Data", "Probability Basics"] }
     ];
 
@@ -237,10 +262,13 @@
                     <div class="item-top">
                         <span class="item-month">${monthsData[idx]}</span>
                         <div class="item-meta">
-                            <span><i class="fa-clock"></i> ${sub.time}</span>
-                            <span><i class="fa-file-alt"></i> 10 QS</span>
+                            <span><i class="fa-solid fa-clock"></i> ${sub.time}</span>
+                            <span><i class="fa-solid fa-list-ol"></i> 30 QS</span>
+                            <span><i class="fa-solid fa-star"></i> 30 MARKS</span>
+                            <span><i class="fa-solid fa-redo"></i> 3 ATTEMPTS</span>
                         </div>
                         <div class="item-scores">
+                            <span class="score-lbl">Results:</span>
                             <div class="box-grid">
                                 <div class="box-unit">--</div>
                                 <div class="box-unit">--</div>
@@ -267,11 +295,9 @@
         document.getElementById('exam-overlay').style.display = 'flex';
         document.body.style.overflow = 'hidden';
         document.getElementById('modal-topic-title').innerText = topic;
-        document.getElementById('modal-body').innerHTML = `<div style="text-align:center; padding-top:100px;"><i class="fas fa-circle-notch fa-spin" style="font-size:40px; color:#00008B;"></i><p style="margin-top:15px; font-weight:700;">Loading Questions...</p></div>`;
+        document.getElementById('modal-body').innerHTML = `<div style="text-align:center; padding-top:100px;"><i class="fas fa-circle-notch fa-spin" style="font-size:40px; color:#00008B;"></i><p style="margin-top:15px; font-weight:700;">Preparing Questions...</p></div>`;
         
         userSelections = {};
-        
-        // Setup Timer from Duration String
         const mins = parseInt(durationStr);
         secondsLeft = mins * 60;
         updateTimerDisplay();
@@ -305,13 +331,14 @@
                 </div>
             `;
         });
-        // Submit Button at the end
         html += `
-            <div class="submit-area">
+            <div class="footer-action-area">
                 <button class="btn-submit" onclick="submitTest()">Submit Exam</button>
+                <button class="btn-close-test" onclick="confirmClose()">Close</button>
             </div>
         `;
         document.getElementById('modal-body').innerHTML = html;
+        document.getElementById('modal-body').scrollTo(0,0);
     }
 
     function selectOption(qIdx, oIdx, val) {
@@ -349,42 +376,58 @@
             if (userSelections[idx] === q.correctAnswer) score++;
         });
 
+        const percent = (score / currentQuestions.length) * 100;
+        let feedback = "";
+        let color = "";
+        
+        if (percent === 100) { feedback = "EXCELLENT!"; color = "var(--success)"; }
+        else if (percent >= 85) { feedback = "VERY GOOD!"; color = "var(--primary)"; }
+        else if (percent >= 50) { feedback = "GOOD"; color = "#334155"; }
+        else { feedback = "NEEDS IMPROVEMENT"; color = "var(--danger)"; }
+
         document.getElementById('modal-body').innerHTML = `
             <div class="result-screen">
-                <div class="score-circle"><span class="score-val">${score}/${currentQuestions.length}</span></div>
-                <h2 style="color:var(--primary); font-weight:900;">TEST COMPLETED!</h2>
-                <p style="margin:10px 0; color:#64748b;">${isAuto ? 'Time is up! Your answers were saved.' : 'Great effort! Your results are ready.'}</p>
-                <button class="btn-review" onclick="viewReview()" style="background:var(--primary); color:white; border:none; padding:12px 40px; border-radius:50px; font-weight:800; margin-top:15px; cursor:pointer;">Review Answers</button>
-                <br>
-                <button onclick="closeExam()" style="margin-top:20px; background:none; border:none; color:#64748b; font-weight:800; cursor:pointer;">Back to Dashboard</button>
+                <div class="score-circle" style="border-color:${color}"><span class="score-val" style="color:${color}">${score}/${currentQuestions.length}</span></div>
+                <h2 class="feedback-text" style="color:${color}">${feedback}</h2>
+                <p class="feedback-msg">${isAuto ? 'Time expired. Your progress was saved automatically.' : 'Congratulations on completing the test!'}</p>
+                <div class="result-buttons">
+                    <button class="btn-res-action btn-res-review" onclick="viewReview()">Review Answers</button>
+                    <button class="btn-res-action btn-res-close" onclick="closeExam()">Close / Exit</button>
+                </div>
             </div>
         `;
-        document.getElementById('modal-body').parentElement.scrollTo(0,0);
+        document.getElementById('modal-body').scrollTo(0,0);
     }
 
     function viewReview() {
-        let html = `<h2 style="text-align:center; margin-bottom:30px; font-weight:900;">REVIEW REPORT</h2>`;
+        let html = `<h2 style="text-align:center; margin-bottom:40px; font-weight:900; color:var(--primary);">DETAILED PERFORMANCE REVIEW</h2>`;
         currentQuestions.forEach((q, idx) => {
             const userAns = userSelections[idx] || 'Not Answered';
             const isCorrect = userAns === q.correctAnswer;
             html += `
                 <div class="review-card">
+                    <div class="review-status ${isCorrect ? 'status-correct' : 'status-wrong'}">
+                        ${isCorrect ? 'Correct' : 'Incorrect'}
+                    </div>
                     <span class="q-id">ID: ${q.id}</span>
                     <div class="q-text">${idx + 1}. ${q.question}</div>
-                    <div style="font-size:14px;">User Choice: <span style="font-weight:800; color:${isCorrect ? 'var(--success)' : 'var(--danger)'}">${userAns}</span></div>
-                    ${!isCorrect ? `<div style="font-size:14px; margin-top:5px;">Correct Answer: <span style="font-weight:800; color:var(--success)">${q.correctAnswer}</span></div>` : ''}
+                    <div style="font-size:15px; margin-bottom:8px;">
+                        Your Answer: <span class="${isCorrect ? 'ans-correct' : 'ans-wrong'}">${userAns}</span>
+                    </div>
+                    ${!isCorrect ? `<div style="font-size:15px;">Correct Answer: <span class="ans-correct">${q.correctAnswer}</span></div>` : ''}
                     <div class="explanation-box">
-                        <strong>EXPLANATION:</strong><br>${q.explanation || 'Detailed explanation not provided for this item.'}
+                        <div style="font-weight:900; margin-bottom:8px; text-transform:uppercase; font-size:12px; letter-spacing:1px;">Deep Explanation</div>
+                        ${q.explanation || 'Detailed logic for this question is currently being analyzed by our academic team.'}
                     </div>
                 </div>
             `;
         });
         document.getElementById('modal-body').innerHTML = html;
-        document.getElementById('modal-body').parentElement.scrollTo({top:0, behavior:'smooth'});
+        document.getElementById('modal-body').scrollTo({top:0, behavior:'smooth'});
     }
 
     function confirmClose() {
-        if(confirm("Exit the test? Your current progress will be lost.")) closeExam();
+        if(confirm("Exit this test? All unsaved progress will be lost.")) closeExam();
     }
 
     function closeExam() {
