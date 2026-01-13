@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://studentvisiontc.github.io/SVTC-Images/SV%20Circle%20logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Sections and Topics - Detailed View</title>
+    <style>
+        :root {
+            --primary-blue: #00008B;
+            --accent-orange: #ffa500;
+            --bg-gray: #f4f7f9;
+            --text-dark: #1e293b;
+            --border-color: #e2e8f0;
+            --topic-bg: #e0f2fe; 
+            --white: #ffffff;
+            --danger-red: #d00000;
+        }
+
+        * { font-family: 'Roboto Slab', serif; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--bg-gray); color: var(--text-dark); margin: 0; padding: 0; }
+
+        main { 
+            width: 100%; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            background: white;
+            min-height: 100vh;
+        }
+
+        /* HEADLINE */
+        .page-header {
+            padding: 30px clamp(15px, 5vw, 40px);
+            text-align: center;
+            border-bottom: 2px solid var(--border-color);
+            background: white;
+        }
+        .page-header h1 {
+            font-size: clamp(22px, 4vw, 32px);
+            font-weight: 900;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        /* SUBJECT PANES */
+        .subject-pane { 
+            padding: clamp(20px, 4vw, 40px) clamp(15px, 5vw, 40px); 
+            border-bottom: 1px solid var(--border-color);
+            background: white;
+        }
+        .sub-head-row { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
+        .sub-head-row i { font-size: clamp(22px, 4vw, 28px); color: var(--accent-orange); }
+        .sub-head-row h3 { font-size: clamp(18px, 3.5vw, 24px); font-weight: 900; color: var(--primary-blue); margin: 0; }
+        
+        .sub-inspiration { 
+            padding: 18px; 
+            font-size: clamp(12px, 2.2vw, 14.5px); 
+            line-height: 1.7; 
+            color: #334155; 
+            text-align: justify; 
+            font-weight: 500; 
+            background: #f8fafc; 
+            border-radius: 12px; 
+            border-left: 5px solid var(--accent-orange); 
+            margin-bottom: 25px; 
+        }
+        
+        .item-row { 
+            background: white; 
+            border: 1px solid var(--border-color); 
+            border-radius: 10px; 
+            overflow: hidden; 
+            margin-bottom: 10px; 
+            width: 100%; 
+            transition: 0.3s ease; 
+        }
+        .item-row:hover { border-color: var(--primary-blue); box-shadow: 0 4px 12px rgba(0,0,139,0.05); }
+
+        .item-top { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; width: 100%; flex-wrap: wrap; gap: 10px; }
+        .item-month { font-weight: 900; color: var(--danger-red); font-size: 11px; text-transform: uppercase; min-width: 90px; }
+        .item-meta { display: flex; gap: 12px; align-items: center; color: var(--primary-blue); font-size: 9px; font-weight: 900; flex: 1; }
+        .item-meta span { background: #eef2ff; padding: 3px 8px; border-radius: 50px; white-space: nowrap; border: 1px solid #e0e7ff; }
+        
+        .item-scores { display: flex; align-items: center; gap: 8px; }
+        .score-lbl { font-size: 9px; font-weight: 800; color: #64748b; }
+        .box-grid { display: flex; gap: 5px; }
+        .box-unit { width: 32px; height: 26px; border: 1.5px solid var(--border-color); border-radius: 5px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 11px; background: #fafafa; }
+        .box-unit.scored { border-color: var(--primary-blue); color: var(--primary-blue); background: #f0f7ff; }
+        
+        .item-bottom { background: var(--topic-bg); padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #bae6fd; width: 100%; gap: 10px; }
+        .item-topic-name { font-size: 13px; font-weight: 800; color: #1e293b; }
+        .item-topic-name span { color: var(--primary-blue); opacity: 0.7; margin-right: 5px; font-weight: 900; }
+        .btn-take { background: var(--primary-blue); color: white; text-decoration: none; padding: 6px 18px; border-radius: 6px; font-size: 9px; font-weight: 900; text-transform: uppercase; transition: 0.3s; box-shadow: 0 2px 4px rgba(0,0,139,0.2); }
+        .btn-take:hover { background: #0000cc; transform: translateY(-1px); }
+
+        @media (max-width: 768px) {
+            .item-top { flex-direction: column; align-items: flex-start; }
+            .item-meta { width: 100%; justify-content: flex-start; margin: 5px 0; }
+            .item-scores { width: 100%; justify-content: space-between; }
+        }
+    </style>
+</head>
+<body>
+
+<main>
+
+    <!-- SUBJECTS CONTAINER -->
+    <div id="subjects-container">
+        <script>
+            // exact data from the up-to-date version
+            const subjectsData = [
+                { id: 1, name: "Number Systems", icon: "fa-hashtag", time: "45 MINS", 
+                  passage: "Numbers are the fundamental vocabulary of the universe! To conquer competitive gateways like JNVST, you must develop a profound intuition for how numbers interact. Mastering Roman Numerals, Place Value, and Divisibility isn't just about solving equations—it's about training your brain to see patterns and logic where others see chaos. This section builds the raw mathematical precision required for top-tier engineering and scientific careers in your future. Embrace the power of digits and become a numerical master!",
+                  topics: ["Place Value Mastery", "Number Types & Logic", "Roman Numerals", "Rounding Off Rules", "Successor & Predecessor", "Expanded Form Mastery", "Number Comparison", "Digit Formation Puzzles", "Fundamental Arithmetic Rules", "Divisibility Tests"] },
+                { id: 2, name: "Mental Ability", icon: "fa-eye", time: "60 MINS", 
+                  passage: "Mental Ability represents the absolute peak of cognitive agility. It constitutes 50% of the Navodaya entrance score because it measures your 'Intellectual Potential'—your ability to process visual data, recognize symmetry, and visualize 3D spaces in your mind. By mastering Mirror Imaging, Pattern Completion, and Space Visualization, you are literally restructuring your neural pathways to think faster and more accurately. This is the mental gymnasium where future innovators and problem-solvers are forged. Unleash your visual intelligence today!",
+                  topics: ["Odd-Man Out Logic", "Figure Matching", "Pattern Completion", "Figure Series Analysis", "Analogy Puzzles", "Mirror Imaging", "Paper Folding Logic", "Embedded Figures", "Space Visualization", "Geometrical Completion"] },
+                { id: 3, name: "Applied Arithmetic", icon: "fa-calculator", time: "45 MINS", 
+                  passage: "Arithmetic is the engine of the global economy! Understanding Profit & Loss, Simple Interest, and Speed-Distance relationships is the key to mastering real-world challenges. This module transforms abstract math into a high-performance toolset. Whether you are aiming for an elite Sainik School seat or preparing for a future in economics and leadership, these applied concepts are non-negotiable. Learn to calculate with surgical precision and develop the strategic mindset needed to stay ahead in the competitive race of the 21st century.",
+                  topics: ["Unitary Method", "Profit & Loss Logic", "Simple Interest Mastery", "Time & Work Dynamics", "Speed & Distance", "Percentage Basics", "Average Calculation", "Area & Perimeter", "Volume Basics", "Decimal Operations"] },
+                { id: 4, name: "Verbal Logic", icon: "fa-brain", time: "45 MINS", 
+                  passage: "Logic is the ultimate weapon of the wise. In this section, you will learn to navigate the complexities of human relationships and linguistic patterns. Mastering Direction Sense, Blood Relations, and Coding-Decoding isn't just about cracking a test—it's about developing the analytical sharpness that world-class lawyers, strategists, and executives use every day. By training your mind to identify logical fallacies and hidden connections, you become a person of high clarity and unbreakable reasoning skills.",
+                  topics: ["Coding-Decoding", "Direction Sense", "Blood Relations", "Ranking Tests", "Alphabet Series", "Number Ranking Logic", "Venn Diagrams", "Syllogism Basics", "Clock & Calendar", "Dictionary Order"] },
+                { id: 5, name: "English Grammar", icon: "fa-spell-check", time: "40 MINS", 
+                  passage: "Language is the currency of leadership. To influence the world, you must first master the structure of the world's most powerful language. This module refines your understanding of tenses, subject-verb agreement, and preposition logic, turning you into a sophisticated communicator. Flawless grammar builds immediate authority in your writing and speaking. Whether you are drafting a competitive essay or preparing for a Sainik interview, your grammatical precision will be the hallmark of your excellence. Speak with confidence, write with power!",
+                  topics: ["Parts Identification", "Adjective Degrees", "Tense Mastery", "Article Usage", "Preposition Logic", "Conjunction Mastery", "Subject-Verb Agreement", "Punctuation Rules", "Sentence Types", "Pronoun Reference"] },
+                { id: 6, name: "Reading Comprehension", icon: "fa-book-open", time: "45 MINS", 
+                  passage: "Reading is the art of deep interpretation. In a world drowning in information, the person who can retrieve facts, infer deeper meanings, and analyze character motivations is the true intellectual leader. This section develops your stamina to handle complex texts and identifies your ability to filter essential data from noise. By mastering synonym searches and inference skills, you build a high-level vocabulary and a critical mind. Every great book you read and every passage you master expands your horizon of knowledge!",
+                  topics: ["Main Idea Extraction", "Direct Retrieval", "Inference Skills", "Vocabulary Context", "Synonym Search", "Antonym Search", "Title Selection", "Sequence of Events", "Character Analysis", "Fact vs. Opinion"] },
+                { id: 7, name: "General Science", icon: "fa-microscope", time: "45 MINS", 
+                  passage: "Science is the quest to understand the mechanics of reality. From the intricate biology of human anatomy to the vast, mysterious expanses of space science, this module ignites your curiosity. Understanding simple machines and the water cycle isn't just for school—it's for becoming a person who understands how the world works. We nurture your inner scientist, encouraging you to ask 'Why?' and 'How?'. In the high-stakes intelligence papers of competitive exams, your scientific awareness will distinguish you as a candidate of high potential.",
+                  topics: ["Plant Life Cycles", "Animal Kingdom", "Human Anatomy", "Nutrition Science", "The Water Cycle", "Simple Machines", "States of Matter", "Space Science", "Health & Hygiene", "Forces & Motion"] },
+                { id: 8, name: "Static GK", icon: "fa-landmark", time: "30 MINS", 
+                  passage: "To lead a nation, you must first know its heart and heritage. General Knowledge is the hallmark of a well-rounded scholar. This section ensures you are a master of India's symbols, famous personalities, and the first milestones of our great history. A person with high GK is always the most informed person in the room. This track prepares you to dominate the general awareness sections of every prestigious scholarship and entrance exam, building a library of facts that will stay with you for a lifetime of success.",
+                  topics: ["National Symbols", "Famous Personalities", "Important Days", "Indian States & Maps", "First in India", "Awards & Honors", "World Wonders", "Books & Authors", "Sports Awareness", "Religious Sites"] },
+                { id: 9, name: "Social Studies", icon: "fa-globe-asia", time: "45 MINS", 
+                  passage: "History is the blueprint of our future, and Geography is the stage upon which we act. This module takes you through the heroic struggle for freedom, the structure of local governments, and the fascinating landforms of our planet. By understanding civic duties and ancient civilizations, you develop a sense of global identity and historical responsibility. Social Studies turns you into a citizen of the world—one who understands the roots of our society and the vast geography that connects us all. Become a scholar of humanity!",
+                  topics: ["Earth Structure", "Freedom Struggle", "Civic Duties", "Landforms & Terrain", "Climate Zones", "Transport History", "Communication Modes", "Ancient Civilizations", "Local Government", "Maps & Globes"] },
+                { id: 10, name: "Data Handling", icon: "fa-chart-bar", time: "40 MINS", 
+                  passage: "We live in the age of big data! The ability to interpret pictographs, bar graphs, and tally marks is one of the most in-demand skills in the modern professional world. This section teaches you to translate numbers into stories and visual information into actionable conclusions. Mastering statistical logic and probability prepares you for a future in data science, engineering, and high-level management. Learn to read between the lines of charts and master the logic that drives the modern information economy. The future belongs to those who master data!",
+                  topics: ["Pictograph Reading", "Bar Graphs Mastery", "Tally Marks Logic", "Table Interpretation", "Circle Graphs (Pie)", "Mean/Average Logic", "Range Discovery", "Pattern Analysis", "Recording Data", "Probability Basics"] }
+            ];
+
+            const monthsData = ["JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER", "JANUARY", "FEBRUARY", "MARCH"];
+
+            subjectsData.forEach(sub => {
+                document.write(`
+                <div class="subject-pane">
+                    <div class="sub-head-row">
+                        <i class="fa-solid ${sub.icon}"></i>
+                        <h3>${sub.id}. ${sub.name}</h3>
+                    </div>
+                    <div class="sub-inspiration">${sub.passage}</div>
+                `);
+                
+                sub.topics.forEach((topic, idx) => {
+                    document.write(`
+                    <div class="item-row">
+                        <div class="item-top">
+                            <span class="item-month">${monthsData[idx]}</span>
+                            <div class="item-meta">
+                                <span><i class="fa-solid fa-clock"></i> ${sub.time}</span>
+                                <span><i class="fa-solid fa-file-alt"></i> 30 QS</span>
+                                <span><i class="fa-solid fa-star"></i> 30 MARKS</span>
+                            </div>
+                            <div class="item-scores">
+                                <span class="score-lbl">Attempts:</span>
+                                <div class="box-grid">
+                                    <div class="box-unit scored">${idx === 0 ? '28' : '--'}</div>
+                                    <div class="box-unit">--</div>
+                                    <div class="box-unit">--</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-bottom">
+                            <div class="item-topic-name"><span>Topic:</span> ${topic}</div>
+                            <a href="#" class="btn-take">Take Test</a>
+                        </div>
+                    </div>`);
+                });
+                
+                document.write(`</div>`);
+            });
+        </script>
+    </div>
+</main>
+
+</body>
+</html>
